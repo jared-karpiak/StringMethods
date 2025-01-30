@@ -17,6 +17,8 @@
             // 'T' + 'a' + 'y' + 'l' + 'o' + 'r' + ' ' + 'S' + 'w' + 'i' + 'f' + 't'
             //  0     1     2     3     4     5     6     7     8     9     10    11
 
+            /***** Formatting *****/
+
             // the Length method will return the number of characters in the string.
             Console.WriteLine($"The length of {name} is {name.Length}.");
 
@@ -31,6 +33,59 @@
             // but instead makes all characters lower case.
             Console.WriteLine($"{name} in lower case is {name.ToLower()}.");
 
+            // With strings, white spaces count as a character, but that may be undesireable in some cases
+            // especially if they are at the beginning or end of a string.
+            // Using the Trim() method, we can remove all 'leading' and 'trailing' white space.
+            string lotsOfSpace = "     Hello!     ";
+            Console.WriteLine($"Not trimmed: {lotsOfSpace}");
+            Console.WriteLine($"Trimmed: {lotsOfSpace.Trim()}");
+
+            
+
+            /***** COMPARISON *****/
+
+            // Contains() will tell us if a character or substring exists in the string.
+            // It returns a boolean (true/false)
+
+            Console.WriteLine($"Does {name} contain 'T'? {name.Contains('T')}.");
+            Console.WriteLine($"Does {name} contain \"ggff\"? {name.Contains("ggff")}.");
+
+            // Equals() will compare the string with another string. If they are an exact match, it will return
+            // true, if not it will return false.
+
+            string secondName = "Taylor Swift";
+            string thirdName = "Ed Sheeran";
+
+            Console.WriteLine($"Does {secondName} match {name}? {name.Equals(secondName)}");
+            Console.WriteLine($"Does {thirdName} match {name}? {name.Equals(thirdName)}");
+
+            // CompareTo() will compare the positions of two strings based on its SORTING order (more on sorting later in the course).
+            // It takes in a second string and will compare where there are in sorting order.
+            // It will return an integer:
+            //    - If the integer is negative, it means the original string precedes the second string
+            //    - If the integer is 0, it means the strings appear in the same position (ie. identical string)
+            //    - If the integer is positive, it means the original string follows the second string.
+            // Here are some examples:
+
+            string strFirst = "Goodbye";
+            string strSecond = "Hello";
+            string strThird = "a small string";
+            string strFourth = "goodbye";
+
+            // this will us give 0 because the strings are identical
+            Console.WriteLine($"Comparing \"{strFirst}\" to \"{strFirst}\" gives us: {strFirst.CompareTo(strFirst)}");
+
+            // this will give us a negative number because "Goodbye" precedes "Hello" in sorting order.
+            Console.WriteLine($"Comparing \"{strFirst}\" to \"{strSecond}\" gives us: {strFirst.CompareTo(strSecond)}");
+
+            // this will give us a positive number "Goodbye" follows "a small string" in sorting order.
+            Console.WriteLine($"Comparing \"{strFirst}\" to  \"{strThird}\" gives us: {strFirst.CompareTo(strThird)}");
+
+            // this will give us a positive number "Goodbye" follows "goodbye" in sorting order.
+            Console.WriteLine($"Comparing \"{strFirst}\" to  \"{strFourth}\" gives us: {strFirst.CompareTo(strFourth)}");
+
+            /***** INDEXING  ******/
+
             // IndexOf() is going to give the number of the first occurrence of a given character or string
             // It returns an integer, the index of string.
             Console.WriteLine($"The space in {name} is located at {name.IndexOf(' ')}.");
@@ -41,12 +96,6 @@
 
             // If IndexOf() cannot find the string or substring, it will return a -1.
             Console.WriteLine($"The Z in {name} is located at index {name.IndexOf('Z')}.");
-
-            // Contains() will tell us if a character or substring exists in the string.
-            // It returns a boolean (true/false)
-
-            Console.WriteLine($"Does {name} contain 'T'? {name.Contains('T')}.");
-            Console.WriteLine($"Does {name} contain \"ggff\"? {name.Contains("ggff")}.");
 
             // To select a specific character inside of a string, we can identify it using its index.
             // To choose the character using its index, we provide the name of the string variable,
@@ -77,9 +126,9 @@
             // To get a "sub string" (a small string inside of the big string) we can use the Substring method.
             // Substring() takes two integers.
             // The first int is the starting index, which is INCLUSIVE.
-            // The second int is the ending index, which is EXCLUSIVE.
+            // The second int is the number of characters to include (the length).
 
-            //                                                 index of first char      index of space
+            //                                                 index of first char      index of space (6, ie. length of 6)
             //                                                              |                |
             //                                                              v                v
             Console.WriteLine($"The first name of {name} is {name.Substring(0, name.IndexOf(' '))}");
